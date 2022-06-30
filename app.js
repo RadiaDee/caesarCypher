@@ -25,9 +25,9 @@ be entirely lower case
 
 
 */
-// original version
+// original version that uses more original functions . works
 // convert letter to alphabet position number
-function findLetterPosition(letter, array){  
+function findLetterPosition(letter, array){  // pass in letter and alphabet for array
     for(let i=0; i<array.length; i++){  // iterate through lettersArray
       if (letter === array[i]){ // match letter to alphabet letter
         return i;   // returns letter position in alphabet
@@ -39,21 +39,21 @@ function caesarCypher(string, num){
     const lettersArray = ["a", "b", "c", "d", "e", "f", "g", 
     "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", 
     "s", "t", "u", "v", "w", "x", "y", "z"];
-    let encryptedString ="";  
+    let encryptedString ="";  // end result
     
     for (let i=0; i<string.length; i++){ // go through the string
         let currentLetter = string[i];  // store letter in currentLetter
         
-        if (currentLetter === " "){
+        if (currentLetter === " "){   // if theres a space add the space to result
             encryptedString = encryptedString + " ";
-            continue;
+            continue;   // continue to rest of loop
         }
         
         // find position of the letter in the alphabet
-        let letterPos = findLetterPosition(currentLetter, lettersArray);  // convert the first letter of the word to alphabet number
-        let encryptedLetterPos = (letterPos +num)%26; // the letter index + shift aka the encrypted letter
+        let letterPos = findLetterPosition(currentLetter, lettersArray);  // convert the letter of the word to alphabet number
+        let encryptedLetterPos = (letterPos +num)%26; // alphabet number + shift aka the encrypted letter
         let encryptedLetter = lettersArray[encryptedLetterPos];  // convert encrypted index to encrypted character
-        encryptedString = encryptedString + encryptedLetter;  // concatenate encrypted letter to encryptedstring                         
+        encryptedString = encryptedString + encryptedLetter;  // concatenate encrypted character to encryptedstring                         
     }
     
     console.log("the encrypted word is "+ encryptedString);
@@ -61,7 +61,7 @@ function caesarCypher(string, num){
 };
 
 
-/*
+/* optional testing here
 describe('Caesar Cypher', () => {
 
   it('is a function?', () => {
